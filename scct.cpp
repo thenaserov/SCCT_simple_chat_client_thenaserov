@@ -20,10 +20,14 @@ SCCT::SCCT(QWidget *parent)
 
     connect(socket, &QTcpSocket::connected, [this]() {
         ui->chatView->appendPlainText("Connected to server!");
+        ui->connectButton->setText("Disconnect");
+        _is_connected = true;
     });
 
     connect(socket, &QTcpSocket::disconnected, [this]() {
         ui->chatView->appendPlainText("Disconnected from server");
+        ui->connectButton->setText("Connect");
+        _is_connected = false;
     });
 }
 
@@ -34,12 +38,16 @@ SCCT::~SCCT()
 
 void SCCT::connectToServer()
 {
-    QString host = ui->serverLineEdit->text();
-    int port = ui->portLineEdit->text().toInt();
+    if (!_is_connected) {
+        QString host = ui->serverLineEdit->text();
+        int port = ui->portLineEdit->text().toInt();
 
-    socket->connectToHost(host, port);
+        socket->connectToHost(host, port);
 
-    ui->chatView->appendPlainText("Connecting...");
+        ui->chatView->appendPlainText("Connecting...");
+    } else {
+        socket->disconnectFromHost();
+    }
 }
 
 void SCCT::sendMessage()

@@ -26,6 +26,7 @@ private slots:
 private:
     Ui::SCCT *ui;
     QTcpSocket *socket;
+    bool _is_connected{ false };
 };
 
 #endif // SCCT_H
