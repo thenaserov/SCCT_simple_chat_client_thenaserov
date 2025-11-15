@@ -34,7 +34,7 @@ if(ANDROID)
     scct.ui
   )
 else()
-  add_executable(SCCT
+  add_executable(SCCT WIN32
     main.cpp
     scct.cpp
     scct.h
