@@ -74,7 +74,14 @@
      <widget class="QWidget" name="widget_2" native="true">
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0" colspan="2">
-        <widget class="QPlainTextEdit" name="chatView"/>
+        <widget class="QPlainTextEdit" name="chatView">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLineEdit" name="messageLineEdit"/>
@@ -97,7 +104,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>34</height>
     </rect>
    </property>
   </widget>

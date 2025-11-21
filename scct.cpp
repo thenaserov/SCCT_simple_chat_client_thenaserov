@@ -43,6 +43,7 @@ void SCCT::connectToServer()
         int port = ui->portLineEdit->text().toInt();
 
         socket->connectToHost(host, port);
+        socket->write(("USERNAME:" + ui->usernameLineEdit->text() + "\n").toUtf8()); // doubt
 
         ui->chatView->appendPlainText("Connecting...");
     } else {
